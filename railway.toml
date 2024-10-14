@@ -1,0 +1,10 @@
+[backend]
+path = "backend"
+build = "mvn clean package"
+start = "java -jar target/got-lost-0.0.1.jar"
+
+# Define service for frontend
+[frontend]
+path = "frontend"
+build = "npm install && npm run build"
+start = "npx serve -s build"
