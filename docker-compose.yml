@@ -8,9 +8,9 @@ services:
     ports:
       - "8080:8080"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/got-lost-db
-      SPRING_DATASOURCE_USERNAME: hahrens
-      SPRING_DATASOURCE_PASSWORD:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/got-lost-db-1
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: password
     depends_on:
       - db
 
@@ -19,9 +19,9 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_DB: got-lost-db
-      POSTGRES_USER: hahrens
-      POSTGRES_PASSWORD:
+      POSTGRES_DB: got-lost-db-1
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
