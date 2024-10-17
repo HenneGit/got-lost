@@ -8,6 +8,6 @@ public class SimpleDTOController {
 
     @GetMapping("/greet")
     public String greet() {
-        return "Hello, welcome to mydfg Spring Boot application!";
+        return "Hello, welcome to Got Lost";
     }
 }
