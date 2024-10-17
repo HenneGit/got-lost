@@ -4,3 +4,9 @@ spring:
     username: ${PROD_DB_USERNAME}
     password: ${PROD_DB_PASSWORD}
     name: got-lost-db
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update  # or create, create-drop, validate based on your needs
+      show-sql: true      # to show SQL queries in logs
+      dialect: org.hibernate.dialect.PostgreSQLDialect

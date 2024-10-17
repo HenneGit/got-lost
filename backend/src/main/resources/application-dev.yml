@@ -3,7 +3,12 @@ spring:
     url: jdbc:postgresql://localhost:5432/blog
     username: postgres
     password: password
-
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update  # or create, create-drop, validate based on your needs
+      show-sql: true      # to show SQL queries in logs
+      dialect: org.hibernate.dialect.PostgreSQLDialect
   sql:
     init:
       mode: always
