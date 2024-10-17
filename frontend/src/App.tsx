@@ -11,6 +11,8 @@ function App() {
 
     useEffect(() => {
         // Function to fetch data from the Spring Boot backend
+
+
         const fetchGreeting = async () => {
             try {
                 const response = await axios.get('/api/greet'); // Use the proxy path
