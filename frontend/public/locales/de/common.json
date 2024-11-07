@@ -1,4 +1,14 @@
 {
   "welcome": "Hallo :)",
-  "welcomeText": "Es tut uns leid, dass du etwas verloren hast. Bevor wir weitermachen, lass mich dir kurz den Prozess erklären: Nachdem du deinen verlorenen Gegenstand erfolgreich eingegeben hast ... "
+  "welcomeText": "Es tut uns leid, dass du etwas verloren hast. Bevor wir weitermachen, lass mich dir kurz den Prozess erklären: Nachdem du deinen verlorenen Gegenstand erfolgreich eingegeben hast ... ",
+  "lostItem": "Was hast du verloren?",
+  "bag": "Tasche",
+  "wallet": "Potte",
+  "key": "Schlüssel",
+  "camera": "Kamera",
+  "phone": "Handy",
+  "clothes": "Kleidung",
+  "jewelery": "Schmuck",
+  "card": "Karte",
+  "other": "Etwas anderes"
 }
