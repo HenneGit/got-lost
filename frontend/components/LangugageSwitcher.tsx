@@ -5,7 +5,7 @@ import {Button} from "@/components/ui/button";
 export default function LanguageSwitcher() {
     const {t, i18n} = useTranslation();
     const router = useRouter();
-    const switchLanguage = (locale) => {
+    const switchLanguage = (locale: string) => {
         router.push(router.pathname, router.asPath, {locale});
     };
 
