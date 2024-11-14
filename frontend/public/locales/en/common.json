@@ -10,5 +10,9 @@
   "clothes": "Clothing",
   "jewelery": "Jewelery",
   "card": "Card",
-  "other": "Other"
+  "other": "Other",
+  "whereAndWhen": "Where and when did you lose your item?",
+  "where": "Where?",
+  "when": "When?",
+  "pickAPlace": "Pick the place"
 }

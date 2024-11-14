@@ -10,5 +10,9 @@
   "clothes": "Kleidung",
   "jewelery": "Schmuck",
   "card": "Karte",
-  "other": "Etwas anderes"
+  "other": "Etwas anderes",
+  "whereAndWhen": "Wo und Wann hast du etwas verloren?",
+  "where": "Wo?",
+  "when": "Wann?",
+  "pickAPlace": "Wähle den Ort"
 }
