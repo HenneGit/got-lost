@@ -10,32 +10,31 @@ import DiamondOutlinedIcon from "@mui/icons-material/DiamondOutlined";
 import CheckroomOutlinedIcon from "@mui/icons-material/CheckroomOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import CreditCardOutlinedIcon from "@mui/icons-material/CreditCardOutlined";
+import {LostItemEnum} from "@/model/lost-item.enum";
 
 interface ButtonWithIconProps {
-    icon: string;
-    onClick?: () => null;
+    icon: LostItemEnum;
+    onClick?: () => void;
 }
 
-type IconMap = {
-    [key: string]: React.ReactElement;
-}
 
-const iconsMap: IconMap = {
-    "wallet": <WalletOutlinedIcon/>,
-    "bag": <ShoppingBagOutlinedIcon/>,
-    "key": <VpnKeyOutlinedIcon/>,
-    "camera": <CameraAltOutlinedIcon/>,
-    "phone": <PhoneAndroidOutlinedIcon/>,
-    "clothes": <CheckroomOutlinedIcon/>,
-    "jewelery": <DiamondOutlinedIcon/>,
-    "card": <CreditCardOutlinedIcon/>,
-    "other": <HelpOutlineOutlinedIcon/>,
-}
+const IconRecord: Record<LostItemEnum, React.ReactElement> = {
+    [LostItemEnum.WALLET]: <WalletOutlinedIcon/>,
+    [LostItemEnum.BAG]: <ShoppingBagOutlinedIcon/>,
+    [LostItemEnum.KEY]: <VpnKeyOutlinedIcon/>,
+    [LostItemEnum.CAMERA]: <CameraAltOutlinedIcon/>,
+    [LostItemEnum.PHONE]: <PhoneAndroidOutlinedIcon/>,
+    [LostItemEnum.CLOTHES]: <CheckroomOutlinedIcon/>,
+    [LostItemEnum.JEWELERY]: <DiamondOutlinedIcon/>,
+    [LostItemEnum.CARD]: <CreditCardOutlinedIcon/>,
+    [LostItemEnum.OTHER]: <HelpOutlineOutlinedIcon/>,
+};
+
 
 
 const MyComponent = ({icon, onClick}: ButtonWithIconProps) => {
     const {t} = useTranslation();
-    const SvgIcon = iconsMap[icon] || <div>:-)</div>;
+    const SvgIcon = IconRecord[icon] || <div>:-)</div>;
     return (
         <div>
             <Button onClick={onClick}>
