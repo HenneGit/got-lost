@@ -14,7 +14,8 @@ import {
     SelectTrigger,
     SelectValue
 } from "@/components/ui/select";
-import {LostItem, LostItemEnum, LostItemInquiry} from "@/model/lost-item.enum";
+import {createUndefinedObject, LostItem, LostItemTypeEnum, LostItemInquiry} from "@/model/lost-item-type.enum";
+import LostItemInputs from "@/components/Start/LostItemInputs/LostItemInputs";
 
 const Start = () => {
 
@@ -22,14 +23,14 @@ const Start = () => {
     const [currentStep, setCurrentStep] = useState(1);
     const [lostItem, setLostItem] = useState<LostItem>({location: undefined, date: undefined, fields: undefined, type: undefined});
 
-    const buttons = Object.values(LostItemEnum);
+    const buttons = Object.values(LostItemTypeEnum);
     const handleNext = (stepNo: number) => {
         setCurrentStep(stepNo);
     };
 
-    const onItemCategoryClick = (itemCategory: LostItemEnum) => {
+    const onItemCategoryClick = (itemCategory: LostItemTypeEnum) => {
         setCurrentStep((prevCount) => prevCount + 1);
-        setLostItem({location: undefined, date: undefined, type: itemCategory, fields: undefined})
+        setLostItem(createUndefinedObject<>)
     }
     const setLocation = (date: string) => {
         setLostItem((prevItem) => ({
@@ -131,7 +132,7 @@ const Start = () => {
                         <CardTitle>{t('whereAndWhen')}</CardTitle>
                     </CardHeader>
                     <CardContent>
-
+                        <LostItemInputs lostItem={lostItem}/>
                     </CardContent>
                     <CardFooter className={'flex justify-end'}>
                         <div onClick={() => handleNext(3)}

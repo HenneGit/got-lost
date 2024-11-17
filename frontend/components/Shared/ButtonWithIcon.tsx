@@ -10,29 +10,29 @@ import DiamondOutlinedIcon from "@mui/icons-material/DiamondOutlined";
 import CheckroomOutlinedIcon from "@mui/icons-material/CheckroomOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import CreditCardOutlinedIcon from "@mui/icons-material/CreditCardOutlined";
-import {LostItemEnum} from "@/model/lost-item.enum";
+import {LostItemTypeEnum} from "@/model/lost-item-type.enum";
 
 interface ButtonWithIconProps {
-    icon: LostItemEnum;
+    icon: LostItemTypeEnum;
     onClick?: () => void;
 }
 
 
-const IconRecord: Record<LostItemEnum, React.ReactElement> = {
-    [LostItemEnum.WALLET]: <WalletOutlinedIcon/>,
-    [LostItemEnum.BAG]: <ShoppingBagOutlinedIcon/>,
-    [LostItemEnum.KEY]: <VpnKeyOutlinedIcon/>,
-    [LostItemEnum.CAMERA]: <CameraAltOutlinedIcon/>,
-    [LostItemEnum.PHONE]: <PhoneAndroidOutlinedIcon/>,
-    [LostItemEnum.CLOTHES]: <CheckroomOutlinedIcon/>,
-    [LostItemEnum.JEWELERY]: <DiamondOutlinedIcon/>,
-    [LostItemEnum.CARD]: <CreditCardOutlinedIcon/>,
-    [LostItemEnum.OTHER]: <HelpOutlineOutlinedIcon/>,
+const IconRecord: Record<LostItemTypeEnum, React.ReactElement> = {
+    [LostItemTypeEnum.WALLET]: <WalletOutlinedIcon/>,
+    [LostItemTypeEnum.BAG]: <ShoppingBagOutlinedIcon/>,
+    [LostItemTypeEnum.KEY]: <VpnKeyOutlinedIcon/>,
+    [LostItemTypeEnum.CAMERA]: <CameraAltOutlinedIcon/>,
+    [LostItemTypeEnum.PHONE]: <PhoneAndroidOutlinedIcon/>,
+    [LostItemTypeEnum.CLOTHES]: <CheckroomOutlinedIcon/>,
+    [LostItemTypeEnum.JEWELERY]: <DiamondOutlinedIcon/>,
+    [LostItemTypeEnum.CARD]: <CreditCardOutlinedIcon/>,
+    [LostItemTypeEnum.OTHER]: <HelpOutlineOutlinedIcon/>,
 };
 
 
 
-const MyComponent = ({icon, onClick}: ButtonWithIconProps) => {
+const ButtonWithIcon = ({icon, onClick}: ButtonWithIconProps) => {
     const {t} = useTranslation();
     const SvgIcon = IconRecord[icon] || <div>:-)</div>;
     return (
@@ -45,4 +45,4 @@ const MyComponent = ({icon, onClick}: ButtonWithIconProps) => {
     );
 };
 
-export default MyComponent;
+export default ButtonWithIcon;

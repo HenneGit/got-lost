@@ -1,4 +1,4 @@
-export enum LostItemEnum {
+export enum LostItemTypeEnum {
     BAG = "bag",
     WALLET = "wallet",
     KEY = "key",
@@ -10,8 +10,22 @@ export enum LostItemEnum {
     OTHER = "other",
 }
 
+
+const lostItemTypeMapping: Record<LostItemTypeEnum, any> = {
+    [LostItemTypeEnum.BAG]: {} as LostItemWithContent,
+    [LostItemTypeEnum.CLOTHES]: {} as LostClothing,
+    [LostItemTypeEnum.CARD]: {} as LostCard,
+    [LostItemTypeEnum.PHONE]: {} as LostCellPhone,
+    [LostItemTypeEnum.JEWELERY]: {} as LostJewelery,
+    [LostItemTypeEnum.OTHER]: {} as LostOther,
+    [LostItemTypeEnum.CAMERA]: {} as LostCamera,
+    [LostItemTypeEnum.KEY]: {} as LostKey,
+    [LostItemTypeEnum.WALLET]: {} as LostItemWithContent,
+};
+
+
 export interface LostItem {
-    type?: LostItemEnum;
+    type?: LostItemTypeEnum;
     location?: string;
     date?: Date;
     fields?: LostItemInquiry;
@@ -61,6 +75,12 @@ export interface LostKey extends LostItemInquiry {
     keyFob?: string;
     whichCar?: string;
 }
+
+export function createUndefinedObject<T extends LostItemInquiry>(): { [K in keyof T]: undefined } {
+
+    return Object.create(null) as { [K in keyof T]: undefined };
+}
+
 
 
 
