@@ -3,7 +3,7 @@ import {useTranslation} from 'next-i18next';
 import {Button} from "@/components/ui/button";
 
 export default function LanguageSwitcher() {
-    const {t, i18n} = useTranslation();
+    const {t} = useTranslation();
     const router = useRouter();
     const switchLanguage = (locale: string) => {
         router.push(router.pathname, router.asPath, {locale});

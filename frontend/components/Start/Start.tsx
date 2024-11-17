@@ -14,8 +14,9 @@ import {
     SelectTrigger,
     SelectValue
 } from "@/components/ui/select";
-import {createUndefinedObject, LostItem, LostItemTypeEnum, LostItemInquiry} from "@/model/lost-item-type.enum";
+import {LostItem, LostItemTypeEnum, LostItemInquiry} from "@/model/lost-item-type.enum";
 import LostItemInputs from "@/components/Start/LostItemInputs/LostItemInputs";
+import {createUndefinedObject} from "@/model/lost-item.factory";
 
 const Start = () => {
 
@@ -28,9 +29,11 @@ const Start = () => {
         setCurrentStep(stepNo);
     };
 
-    const onItemCategoryClick = (itemCategory: LostItemTypeEnum) => {
+    const onItemCategoryClick = (itemType: LostItemTypeEnum) => {
         setCurrentStep((prevCount) => prevCount + 1);
-        setLostItem(createUndefinedObject<>)
+        let undefinedObject = createUndefinedObject({...lostItem, type: itemType});
+        console.log(undefinedObject);
+        setLostItem(undefinedObject);
     }
     const setLocation = (date: string) => {
         setLostItem((prevItem) => ({
