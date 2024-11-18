@@ -17,17 +17,17 @@ const emptyLostItemInquiry = {
 const lostItemTypeMapping: Record<LostItemTypeEnum, any> = {
     [LostItemTypeEnum.BAG]: {...emptyLostItemInquiry, content: undefined} as LostItemWithContent,
     [LostItemTypeEnum.CLOTHES]: {...emptyLostItemInquiry, size: ""} as LostClothing,
-    [LostItemTypeEnum.CARD]: {...emptyLostItemInquiry, countOfOrigin: undefined, serialNumber: undefined, type: undefined} as LostCard,
+    [LostItemTypeEnum.CARD]: {...emptyLostItemInquiry, countryOfOrigin: undefined, serialNumber: undefined, cardType: undefined, sex: undefined, city: undefined, birthDay: undefined} as LostCard,
     [LostItemTypeEnum.PHONE]: {...emptyLostItemInquiry, homeScreen: undefined, case: undefined, model: undefined} as LostCellPhone,
-    [LostItemTypeEnum.JEWELERY]: {...emptyLostItemInquiry, type: undefined} as LostJewelery,
-    [LostItemTypeEnum.OTHER]: {...emptyLostItemInquiry, description: undefined} as LostOther,
-    [LostItemTypeEnum.CAMERA]: {...emptyLostItemInquiry, serialNumber: undefined} as LostCamera,
+    [LostItemTypeEnum.JEWELERY]: {...emptyLostItemInquiry, jeweleryType: undefined} as LostJewelery,
+    [LostItemTypeEnum.OTHER]: {...emptyLostItemInquiry, otherDescription: undefined} as LostOther,
+    [LostItemTypeEnum.CAMERA]: {...emptyLostItemInquiry, cameraModel: undefined} as LostCamera,
     [LostItemTypeEnum.KEY]: {...emptyLostItemInquiry, numberOfKeys: undefined, keyFob: undefined, whichCar: undefined} as LostKey,
     [LostItemTypeEnum.WALLET]: {...emptyLostItemInquiry, content: undefined} as LostItemWithContent,
 };
 
 
-export function createUndefinedObject(item: LostItem): Partial<LostItem> {
+export function createUndefinedObject(item: LostItem): LostItem {
     console.log(item);
     if (item.type) {
         const specificObject = lostItemTypeMapping[item.type];

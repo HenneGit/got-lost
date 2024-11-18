@@ -36,9 +36,13 @@ export interface LostClothing extends LostItemInquiry {
 }
 
 export interface LostCard extends LostItemInquiry {
-    countOfOrigin?: string;
+    countryOfOrigin?: string;
     serialNumber?: number;
-    type?: string;
+    cardType?: string;
+    sex?: string;
+    birthDay?: Date;
+    city?: string;
+
 }
 
 export interface LostCellPhone extends LostItemInquiry {
@@ -48,15 +52,15 @@ export interface LostCellPhone extends LostItemInquiry {
 }
 
 export interface LostJewelery extends LostItemInquiry {
-    type?: string;
+    jeweleryType?: string;
 }
 
 export interface LostOther extends LostItemInquiry {
-    description?: string;
+    otherDescription?: string;
 }
 
 export interface LostCamera extends LostItemInquiry {
-    serialNumber?: string;
+    cameraModel?: string;
 }
 
 export interface LostKey extends LostItemInquiry {

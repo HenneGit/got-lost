@@ -23,7 +23,6 @@ const formSchema = z.object({
 });
 
 
-
 const LostItemInputs = ({lostItem}: LostItemInputsProps) => {
     const {t} = useTranslation();
 
@@ -46,16 +45,17 @@ const LostItemInputs = ({lostItem}: LostItemInputsProps) => {
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                 {lostItem.fields ? Object.keys(lostItem.fields).map((fieldName, index) => (
                     <FormField
+                        key={index}
                         control={form.control}
-                        name="text"
+                        name={fieldName}
                         render={({field}) => (
                             <FormItem>
-                                <FormLabel>{t(fieldName)}</FormLabel>
+                                <FormLabel>{t("fields." + fieldName)}</FormLabel>
                                 <FormControl>
-                                    <Input placeholder={t(fieldName + 'Description')} {...field} />
+                                    <Input key={index} placeholder={t("fields." + fieldName + 'Description')} {...field} />
                                 </FormControl>
                                 <FormDescription>
-                                    {t(fieldName + 'Description')}
+                                    {t("fields." + fieldName + 'Description')}
                                 </FormDescription>
                                 <FormMessage/>
                             </FormItem>
