@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import LanguageSwitcher from "@/components/LangugageSwitcher";
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import Start from "@/components/Start/Start";
+import {GetStaticPropsContext} from "next";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -21,7 +22,7 @@ export default function Home() {
     </div>
   );
 }
-export async function getStaticProps({ locale } ) {
+export async function getStaticProps({ locale }: GetStaticPropsContext ) {
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common'])), // Adjust based on your translation namespaces
