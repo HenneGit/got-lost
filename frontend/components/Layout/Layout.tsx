@@ -1,9 +1,14 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import Nav from "@/components/Layout/Nav";
 import Meta from "@/components/Layout/Meta";
 import styles from '../../styles/layout.module.css';
-const Layout = ({ children }) => {
 
+
+type LayoutProps = {
+    children: ReactNode;
+};
+
+const Layout: React.FC<LayoutProps> = ({ children }) => {
     return (
         <>
             <Meta />
@@ -16,8 +21,8 @@ const Layout = ({ children }) => {
                 </main>
             </div>
         </>
-
     );
 };
+
 
 export default Layout;
