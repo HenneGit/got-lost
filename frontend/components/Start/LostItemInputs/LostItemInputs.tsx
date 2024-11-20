@@ -28,10 +28,6 @@ const LostItemInputs = ({lostItem}: LostItemInputsProps) => {
 
     const form = useForm({
         resolver: zodResolver(formSchema),
-        defaultValues: {
-            text: "",
-            number: "",
-        },
         mode: "onBlur",
     });
 
