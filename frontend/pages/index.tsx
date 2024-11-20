@@ -22,10 +22,12 @@ export default function Home() {
     </div>
   );
 }
-export async function getStaticProps({ locale }: GetStaticPropsContext ) {
+export async function getStaticProps({ locale }: GetStaticPropsContext) {
+  const resolvedLocale = locale || 'en';
+
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common'])), // Adjust based on your translation namespaces
+      ...(await serverSideTranslations(resolvedLocale, ['common'])),
     },
   };
 }
