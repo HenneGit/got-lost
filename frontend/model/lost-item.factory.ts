@@ -40,6 +40,6 @@ export function createUndefinedObject(item: LostItem): LostItem {
     //error
     return {
         type: item.type,
-        fields: undefined,
+        fields: {},
     };
 }

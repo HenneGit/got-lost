@@ -22,7 +22,7 @@ const Start = () => {
 
     const {t} = useTranslation();
     const [currentStep, setCurrentStep] = useState(1);
-    const [lostItem, setLostItem] = useState<LostItem>({location: undefined, date: undefined, fields: undefined, type: undefined});
+    const [lostItem, setLostItem] = useState<LostItem>({location: undefined, date: undefined, fields: {}, type: undefined});
 
     const buttons = Object.values(LostItemTypeEnum);
     const handleNext = (stepNo: number) => {

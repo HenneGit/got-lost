@@ -14,22 +14,47 @@ interface LostItemInputsProps {
     lostItem: LostItem;
 }
 
-const formSchema = z.object({
-    text: z.string().min(2, {
-        message: "Text must be at least 2 characters long.",
-    }),
-    number: z
-        .preprocess((value) => Number(value), z.number().positive("Must be a positive number")),
-});
+const generateSchema = (fields: string[]) => {
+    const schemaShape = fields.reduce((acc, field) => {
+        acc[field] = z.string().min(2, {message: `${field} must be at least 2 characters long.`});
+        return acc;
+    }, {} as Record<string, z.ZodString>);
+    return z.object(schemaShape);
+};
 
 
 const LostItemInputs = ({lostItem}: LostItemInputsProps) => {
     const {t} = useTranslation();
+    const emptyObject = {
+        material: "",
+        manufacturer: "",
+        color: "",
+        countryOfOrigin: "",
+        serialNumber: "",
+        cardType: "",
+        sex: "",
+        birthDay: "",
+        city: "",
+        homeScreen: "",
+        case: "",
+        model: "",
+        size: "",
+        content: "",
+        jeweleryType: "",
+        otherDescription: "",
+        cameraModel: "",
+        numberOfKeys: "",
+        keyFob: "",
+        whichCar: ""
 
+    };
     const form = useForm({
-        resolver: zodResolver(formSchema),
+        resolver: zodResolver(generateSchema(Object.keys(lostItem.fields))),
+        defaultValues: emptyObject,
         mode: "onBlur",
     });
+
+
 
     const onSubmit = (data: any) => {
         console.log(data);
@@ -39,25 +64,34 @@ const LostItemInputs = ({lostItem}: LostItemInputsProps) => {
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                {lostItem.fields ? Object.keys(lostItem.fields).map((fieldName, index) => (
-                    <FormField
-                        key={index}
-                        control={form.control}
-                        name={fieldName}
-                        render={({field}) => (
-                            <FormItem>
-                                <FormLabel>{t("fields." + fieldName)}</FormLabel>
-                                <FormControl>
-                                    <Input key={index} placeholder={t("fields." + fieldName + 'Description')} {...field} />
-                                </FormControl>
-                                <FormDescription>
-                                    {t("fields." + fieldName + 'Description')}
-                                </FormDescription>
-                                <FormMessage/>
-                            </FormItem>
-                        )}
-                    />
-                )) : null}
+                {Object.keys(emptyObject).map((fieldName) => {
+                    if (!Object.keys(lostItem.fields).includes(fieldName)) {
+                        return null;
+                    }
+
+                    return (
+                        <FormField
+                            key={fieldName}
+                            control={form.control}
+                            name={fieldName as | "material" | "manufacturer" | "color" | "content" | "size" | "countryOfOrigin" | "serialNumber" | "cardType" | "sex" | "city" | "birthDay" | "homeScreen" | "case" | "model" | "jeweleryType" | "otherDescription" | "cameraModel" | "numberOfKeys" | "keyFob" | "whichCar"}
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>{t("fields." + fieldName)}</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            placeholder={t("fields." + fieldName + "Description")}
+                                            {...field}
+                                        />
+                                    </FormControl>
+                                    <FormDescription>
+                                        {t("fields." + fieldName + "Description")}
+                                    </FormDescription>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                    );
+                })}
                 <Button type="submit">Submit</Button>
             </form>
         </Form>

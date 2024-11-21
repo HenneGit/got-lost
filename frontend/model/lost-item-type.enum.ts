@@ -11,14 +11,11 @@ export enum LostItemTypeEnum {
 }
 
 
-
-
 export interface LostItem {
     type?: LostItemTypeEnum;
     location?: string;
     date?: Date;
-    fields?: LostItemInquiry;
-
+    fields: LostItemInquiry;
 }
 
 export interface LostItemInquiry {
@@ -37,10 +34,10 @@ export interface LostClothing extends LostItemInquiry {
 
 export interface LostCard extends LostItemInquiry {
     countryOfOrigin?: string;
-    serialNumber?: number;
+    serialNumber?: string;
     cardType?: string;
     sex?: string;
-    birthDay?: Date;
+    birthDay?: string;
     city?: string;
 
 }
