@@ -54,8 +54,6 @@ const LostItemInputs = ({lostItem}: LostItemInputsProps) => {
         mode: "onBlur",
     });
 
-
-
     const onSubmit = (data: any) => {
         console.log(data);
         alert("Form submitted successfully!");
@@ -68,12 +66,14 @@ const LostItemInputs = ({lostItem}: LostItemInputsProps) => {
                     if (!Object.keys(lostItem.fields).includes(fieldName)) {
                         return null;
                     }
-
                     return (
                         <FormField
                             key={fieldName}
                             control={form.control}
-                            name={fieldName as | "material" | "manufacturer" | "color" | "content" | "size" | "countryOfOrigin" | "serialNumber" | "cardType" | "sex" | "city" | "birthDay" | "homeScreen" | "case" | "model" | "jeweleryType" | "otherDescription" | "cameraModel" | "numberOfKeys" | "keyFob" | "whichCar"}
+                            name={fieldName as | "material" | "manufacturer" | "color" | "content" | "size" |
+                                "countryOfOrigin" | "serialNumber" | "cardType" | "sex" | "city" | "birthDay" |
+                                "homeScreen" | "case" | "model" | "jeweleryType" | "otherDescription" | "cameraModel"
+                                | "numberOfKeys" | "keyFob" | "whichCar"}
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>{t("fields." + fieldName)}</FormLabel>
